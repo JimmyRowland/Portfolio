@@ -5,6 +5,8 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
+import LazyLoad from "react-lazyload";
+
 // @material-ui/icons
 // core components
 import Table from "@material-ui/core/Table";
@@ -90,40 +92,44 @@ function Projects({
           </animated.div>
         </Grid>
         <Grid item>
-          <a
-            href={
-              "https://codepen.io/please_check_your_network_connection/full/WxVEzg"
-            }
-          >
-            <animated.img
-              style={{
-                width: "100px",
-                height: "auto",
-                transform: radians.interpolate(interp(3))
-              }}
-              src={
-                "https://res.cloudinary.com/dfxanglyc/image/upload/v1553037938/portfolio/Screenshot_from_2019-03-19_16-18-57.png"
+          <LazyLoad height={100} once={true}>
+            <a
+              href={
+                "https://codepen.io/please_check_your_network_connection/full/WxVEzg"
               }
-            />
-          </a>
+            >
+              <animated.img
+                style={{
+                  width: "100px",
+                  height: "auto",
+                  transform: radians.interpolate(interp(3))
+                }}
+                src={
+                  "https://res.cloudinary.com/dfxanglyc/image/upload/v1553037938/portfolio/Screenshot_from_2019-03-19_16-18-57.png"
+                }
+              />
+            </a>
+          </LazyLoad>
         </Grid>
         <Grid item>
-          <a
-            href={
-              "https://codepen.io/please_check_your_network_connection/full/kXOLyb"
-            }
-          >
-            <animated.img
-              style={{
-                width: "100px",
-                height: "auto",
-                transform: radians.interpolate(interp(1))
-              }}
-              src={
-                "https://res.cloudinary.com/dfxanglyc/image/upload/v1553037966/portfolio/Screenshot_from_2019-03-19_16-25-58.png"
+          <LazyLoad height={100} once={true}>
+            <a
+              href={
+                "https://codepen.io/please_check_your_network_connection/full/kXOLyb"
               }
-            />
-          </a>
+            >
+              <animated.img
+                style={{
+                  width: "100px",
+                  height: "auto",
+                  transform: radians.interpolate(interp(1))
+                }}
+                src={
+                  "https://res.cloudinary.com/dfxanglyc/image/upload/v1553037966/portfolio/Screenshot_from_2019-03-19_16-25-58.png"
+                }
+              />
+            </a>
+          </LazyLoad>
         </Grid>
       </Grid>
     </animated.div>
@@ -282,7 +288,7 @@ function GradeDisctribution({
           style={{ ...imgSpring }}
           ref={imgRef}
           className={classes.randomProjectImg}
-          src="https://res.cloudinary.com/dfxanglyc/image/upload/v1552950997/portfolio/Screenshot_from_2019-03-18_16-16-03.png"
+          src="https://res.cloudinary.com/dfxanglyc/image/upload/v1557949220/portfolio/Screenshot-from-2019-03-18-16-14-41-compressor.png"
         />
       </a>
     </animated.div>
@@ -501,10 +507,10 @@ function Portfolio({ classes, ...rest }) {
       setProjectDisplayToggle(true);
     }
   }, [scrollTop, windowHeight]);
-  const flaggyflagAnimationRef= useRef();
-  const flaggyflagContentAnimationRef= useRef();
+  const flaggyflagAnimationRef = useRef();
+  const flaggyflagContentAnimationRef = useRef();
   const flagTrails = useTrail(3, {
-    ref:flaggyflagAnimationRef,
+    ref: flaggyflagAnimationRef,
     config: config.slow,
     to: {
       transform: `translate3d(0,${
@@ -552,7 +558,10 @@ function Portfolio({ classes, ...rest }) {
   }, [nailAndGearDisplayToggle]);
 
   useChain(
-      flaggyflagAnimationToggle?[flaggyflagAnimationRef,flaggyflagContentAnimationRef]:[flaggyflagContentAnimationRef,flaggyflagAnimationRef],[0,1]
+    flaggyflagAnimationToggle
+      ? [flaggyflagAnimationRef, flaggyflagContentAnimationRef]
+      : [flaggyflagContentAnimationRef, flaggyflagAnimationRef],
+    [0, 1]
   );
   return (
     <div className={classes.root}>
@@ -611,7 +620,7 @@ function Portfolio({ classes, ...rest }) {
               <animated.img
                 alt={"Gallery App"}
                 src={
-                  "https://res.cloudinary.com/dfxanglyc/image/upload/v1552769164/portfolio/Screenshot_from_2019-03-16_13-32-47.png"
+                  "https://res.cloudinary.com/dfxanglyc/image/upload/v1557949220/portfolio/Screenshot-from-2019-03-16-13-32-47-compressor.png"
                 }
                 className={classes.BGIimg}
                 style={{ opacity: flaggyflagContentOpacitySpring.opacity }}
@@ -650,19 +659,21 @@ function Portfolio({ classes, ...rest }) {
             {splitAVEStitle}
             {/*{nailRotationAngel.angle.interpolate(angle=>angle)}*/}
           </animated.h3>
-          <a
-            onMouseMove={nailOnMove}
-            href={"http://111.221.44.154:21414/"}
-            style={{ margin: "auto", padding: "auto", width: "auto" }}
-          >
-            <img
-              alt={"blog"}
-              src={
-                "https://res.cloudinary.com/dfxanglyc/image/upload/v1552773361/portfolio/Screenshot_from_2019-03-16_14-55-49.png"
-              }
-              className={classes.AVESimg}
-            />
-          </a>
+          <LazyLoad height={200} once={true}>
+            <a
+              onMouseMove={nailOnMove}
+              href={"http://111.221.44.154:21414/"}
+              style={{ margin: "auto", padding: "auto", width: "auto" }}
+            >
+              <img
+                alt={"blog"}
+                src={
+                  "https://res.cloudinary.com/dfxanglyc/image/upload/v1557949220/portfolio/Screenshot-from-2019-03-16-14-55-49-compressor.png"
+                }
+                className={classes.AVESimg}
+              />
+            </a>
+          </LazyLoad>
         </Grid>
       </Grid>
 
@@ -697,13 +708,11 @@ function Portfolio({ classes, ...rest }) {
 
       <Grid container className={classes.projectListContainer}>
         <div className={classes.projectListContainer}>
-            <Header
-                brand="Yu's Portfolio"
-                rightLinks={<HeaderLinks />}
-                color="dark"
-
-            />
-
+          <Header
+            brand="Yu's Portfolio"
+            rightLinks={<HeaderLinks />}
+            color="dark"
+          />
 
           <Paper className={classes.paperForTable}>
             <Table>
