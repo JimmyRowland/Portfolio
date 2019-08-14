@@ -615,7 +615,7 @@ function Portfolio({ classes, ...rest }) {
               style={{
                 display: flaggyflagContentDisplayToggle ? "flex" : "none"
               }}
-              href={"http://144.34.239.231/"}
+              href={"http://95.169.27.185/"}
             >
               <animated.img
                 alt={"Gallery App"}
@@ -731,7 +731,7 @@ function Portfolio({ classes, ...rest }) {
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row">
-                    <a href={"http://144.34.239.231/"}>
+                    <a href={"http://95.169.27.185/"}>
                       Gallery app built with VulcanJS and material-ui
                     </a>
                   </TableCell>
